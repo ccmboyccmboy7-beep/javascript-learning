@@ -1,0 +1,38 @@
+/* *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.parent{
+    background-color: lightblue;
+    margin: 10px 190px;
+
+ display: grid;
+ grid-template-columns:60px 60px 60px;
+    
+    display: grid;
+  
+}
+.items{
+height: 50px;
+width: 50px;
+}
+.item1{
+    background-color: blue;
+}
+.item2{
+    background-color: rgb(51, 255, 0);
+}
+.item3{
+    background-color: rgb(255, 0, 183);
+}
+
+.item4{
+    background-color: cadetblue;
+}
+.item5{
+    background-color: rgb(160, 95, 95);
+}
+.item6{
+    background-color: rgb(76, 90, 90);
+} */
