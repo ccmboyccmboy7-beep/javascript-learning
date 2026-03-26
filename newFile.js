@@ -1452,64 +1452,196 @@
 //     e.target.parentElement.remove()
 // })
 
-
-
-
 //   ul.append(li);
 //   li.append(but);
 // });
-const passengers = [
-    { id: "PX-001", name: "  ahmed cali  ", weight: 35, type: "Business-V", status: "pending" },
-    { id: "PX-002", name: "muna xuseen-X", weight: 12, type: "Economy-R", status: "pending" },
-    { id: "PX-003", name: "  sahra hassan  ", weight: 42, type: "Business-V", status: "pending" },
-    { id: "PX-004", name: "jaamac faarax", weight: 25, type: "Economy-R", status: "rejected" },
-    { id: "PX-005", name: "  abdullahi mohamed  ", weight: 18, type: "Economy-V", status: "pending" }
+// const passengers = [
+//     { id: "PX-001", name: "  ahmed cali  ", weight: 35, type: "Business-V", status: "pending" },
+//     { id: "PX-002", name: "muna xuseen-X", weight: 12, type: "Economy-R", status: "pending" },
+//     { id: "PX-003", name: "  sahra hassan  ", weight: 42, type: "Business-V", status: "pending" },
+//     { id: "PX-004", name: "jaamac faarax", weight: 25, type: "Economy-R", status: "rejected" },
+//     { id: "PX-005", name: "  abdullahi mohamed  ", weight: 18, type: "Economy-V", status: "pending" }
+// ];
+// const TheGlobalFlightSecuritySystem=(pass)=>{
+//     const div=document.querySelector("#flight-display")
+//     const passedPassenger= pass
+//    .filter((e)=>{
+//     const namep=e.name.trim();
+// return !(namep.endsWith("-X")||e.status==="rejected")
+//     })
+//     .map((e)=>{
+//         const namepp=e.name.trim().toUpperCase();
+//         let price=0;
+//         if(e.type.endsWith("-V")){
+//             price=500;
+
+//         }
+//         else{
+//             price=300;
+//         }
+//         if(e.weight>30){
+//             price+=50;
+
+//         }
+// return{
+//     ...e,
+//     price:price,
+//     name:namepp
+
+// }
+//     })
+
+//     // qeybta DOMKA
+//     passedPassenger.forEach(element => {
+//         const section=document.createElement("section");
+//         section.classList.add("boarding-pass");
+//         section.innerHTML=`<h3>${element.name}</h3>
+//         <p>${element.id}</p>
+//         <span>${element.price}</span>`
+//         section.addEventListener("dblclick",(e)=>{
+//             section.classList.add("hidden")
+//             console.log(`Rakaabka ${element.name} wuxuu galay diyaaradda`)
+//         })
+//         div.append(section)
+//     });
+//     return passedPassenger;
+
+// }
+// console.table(TheGlobalFlightSecuritySystem(passengers))
+const smileHouseProducts = [
+  {
+    id: "SH-001",
+    name: "  MacBook M1 Pro  ",
+    stock: 12,
+    price: 1500,
+    weight: 2,
+    origin: "International",
+  },
+  {
+    id: "SH-002",
+    name: "Broken Screen-DAMAGED",
+    stock: 1,
+    price: 200,
+    weight: 5,
+    origin: "Local",
+  },
+  {
+    id: "SH-003",
+    name: "  Heavy Generator  ",
+    stock: 3,
+    price: 3000,
+    weight: 120,
+    origin: "International",
+  },
+  {
+    id: "SH-004",
+    name: "Old Cables-EXPIRED",
+    stock: 50,
+    price: 10,
+    weight: 1,
+    origin: "Local",
+  },
+  {
+    id: "SH-005",
+    name: "  Office Chair  ",
+    stock: 0,
+    price: 150,
+    weight: 15,
+    origin: "Local",
+  },
+  {
+    id: "SH-006",
+    name: "  Samsung Monitor  ",
+    stock: 4,
+    price: 400,
+    weight: 8,
+    origin: "International",
+  },
 ];
-const TheGlobalFlightSecuritySystem=(pass)=>{
-    const div=document.querySelector("#flight-display")
-    const passedPassenger= pass
-   .filter((e)=>{
-    const namep=e.name.trim();
-return !(namep.endsWith("-X")||e.status==="rejected")
+const SmileHouseSmartInventoryShipping = (smile) => {
+  const Activesmileproducts=smile
+    .filter((e) => {
+      return !(
+        e.name.includes("EXPIRED") ||
+        e.name.includes("DAMAGED") ||
+        e.stock === 0
+      );
     })
-    .map((e)=>{
-        const namepp=e.name.trim().toUpperCase();
-        let price=0;
-        if(e.type.endsWith("-V")){
-            price=500;
+    .map((e) => {
+      const namep = e.name.trim().toUpperCase();
+      const TrackingCode = e.id + namep.slice(0,3);
+      let shppingPrice = e.price * 0.05;
+      if (e.origin === "International") {
+        shppingPrice = e.price * 0.2;
+      }
+      let Penalty=0;
+      if(e.weight>50) {
+        Penalty=100;
 
-        }
-        else{
-            price=300;
-        }
-        if(e.weight>30){
-            price+=50;
-
-        }
-return{
-    ...e,
-    price:price,
-    name:namepp
-
-}
-    })
+      }
+      return{
+        ...e,
+        TrackingCode:TrackingCode,
+        name:namep,
+   totalprice:e.price+shppingPrice+Penalty,
+        shppingPrice:shppingPrice,
+        Penalty:Penalty
 
 
-    // qeybta DOMKA
-    passedPassenger.forEach(element => {
-        const section=document.createElement("section");
-        section.classList.add("boarding-pass");
-        section.innerHTML=`<h3>${element.name}</h3>
-        <p>${element.id}</p>
-        <span>${element.price}</span>`
-        section.addEventListener("dblclick",(e)=>{
-            section.classList.add("hidden")
-            console.log(`Rakaabka ${element.name} wuxuu galay diyaaradda`)
-        })
-        div.append(section)
+        
+      }
+      
     });
-    return passedPassenger;
-    
 
-}
-console.table(TheGlobalFlightSecuritySystem(passengers))
+const div=document.querySelector("#inventory-grid")
+    // dom
+Activesmileproducts.forEach(element => {
+    const card = document.createElement("div");
+    
+    card.innerHTML = `
+      <div class="main-card max-w-sm mx-auto p-6 bg-white rounded-3xl shadow-xl border border-gray-100 transition-all hover:shadow-2xl cursor-pointer">
+        <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-1">${element.name}</h2>
+        <p class="text-sm font-mono font-bold text-blue-600 mb-6 tracking-code">#${element.TrackingCode}</p>
+        <div class="pt-4 border-t border-gray-100">
+          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest text-gray-400">Price</span>
+          <p class="text-3xl font-black text-gray-900 leading-none mt-1">$${element.totalprice}</p>
+        </div>
+      </div>`;
+
+    const kana = card.querySelector(".main-card");
+
+    // Stock Alert Logic
+    if (element.stock < 5) {
+        kana.classList.remove("bg-white");
+        kana.classList.add("bg-red-50", "border-red-400", "border-2");
+        kana.querySelector('.tracking-code').classList.replace("text-blue-600", "text-red-600");
+    }
+
+    // Click Event Fixed
+    card.addEventListener("click", () => {
+        // Ka saar dhamaan class-yadii hore (White ama Red)
+        kana.classList.remove("bg-red-50", "border-red-400", "bg-white", "border-2");
+        
+        // Ku dar class-yada cusub (Kala saar xaraf kasta)
+        kana.classList.add("bg-blue-600", "text-white", "shadow-blue-500/50");
+
+        // Hubi in dhamaan qoraalka gudaha ku jira uu cadaan noqdo
+        kana.querySelectorAll("h2, p, span").forEach(el => {
+            el.classList.add("text-white");
+            el.classList.remove("text-gray-900", "text-blue-600", "text-gray-400", "text-red-600");
+        });
+
+        console.log(`Alaabta ${element.name} waa la dalbaday! ✅`);
+    });
+
+    div.append(card);
+});
+return Activesmileproducts
+};
+console.table(SmileHouseSmartInventoryShipping(smileHouseProducts))
+
+
+
+
+
+
