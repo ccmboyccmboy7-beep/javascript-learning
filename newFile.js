@@ -1508,140 +1508,199 @@
 
 // }
 // console.table(TheGlobalFlightSecuritySystem(passengers))
-const smileHouseProducts = [
-  {
-    id: "SH-001",
-    name: "  MacBook M1 Pro  ",
-    stock: 12,
-    price: 1500,
-    weight: 2,
-    origin: "International",
-  },
-  {
-    id: "SH-002",
-    name: "Broken Screen-DAMAGED",
-    stock: 1,
-    price: 200,
-    weight: 5,
-    origin: "Local",
-  },
-  {
-    id: "SH-003",
-    name: "  Heavy Generator  ",
-    stock: 3,
-    price: 3000,
-    weight: 120,
-    origin: "International",
-  },
-  {
-    id: "SH-004",
-    name: "Old Cables-EXPIRED",
-    stock: 50,
-    price: 10,
-    weight: 1,
-    origin: "Local",
-  },
-  {
-    id: "SH-005",
-    name: "  Office Chair  ",
-    stock: 0,
-    price: 150,
-    weight: 15,
-    origin: "Local",
-  },
-  {
-    id: "SH-006",
-    name: "  Samsung Monitor  ",
-    stock: 4,
-    price: 400,
-    weight: 8,
-    origin: "International",
-  },
-];
-const SmileHouseSmartInventoryShipping = (smile) => {
-  const Activesmileproducts=smile
-    .filter((e) => {
-      return !(
-        e.name.includes("EXPIRED") ||
-        e.name.includes("DAMAGED") ||
-        e.stock === 0
-      );
-    })
-    .map((e) => {
-      const namep = e.name.trim().toUpperCase();
-      const TrackingCode = e.id + namep.slice(0,3);
-      let shppingPrice = e.price * 0.05;
-      if (e.origin === "International") {
-        shppingPrice = e.price * 0.2;
-      }
-      let Penalty=0;
-      if(e.weight>50) {
-        Penalty=100;
+// const smileHouseProducts = [
+//   {
+//     id: "SH-001",
+//     name: "  MacBook M1 Pro  ",
+//     stock: 12,
+//     price: 1500,
+//     weight: 2,
+//     origin: "International",
+//   },
+//   {
+//     id: "SH-002",
+//     name: "Broken Screen-DAMAGED",
+//     stock: 1,
+//     price: 200,
+//     weight: 5,
+//     origin: "Local",
+//   },
+//   {
+//     id: "SH-003",
+//     name: "  Heavy Generator  ",
+//     stock: 3,
+//     price: 3000,
+//     weight: 120,
+//     origin: "International",
+//   },
+//   {
+//     id: "SH-004",
+//     name: "Old Cables-EXPIRED",
+//     stock: 50,
+//     price: 10,
+//     weight: 1,
+//     origin: "Local",
+//   },
+//   {
+//     id: "SH-005",
+//     name: "  Office Chair  ",
+//     stock: 0,
+//     price: 150,
+//     weight: 15,
+//     origin: "Local",
+//   },
+//   {
+//     id: "SH-006",
+//     name: "  Samsung Monitor  ",
+//     stock: 4,
+//     price: 400,
+//     weight: 8,
+//     origin: "International",
+//   },
+// ];
+// const SmileHouseSmartInventoryShipping = (smile) => {
+//   const Activesmileproducts=smile
+//     .filter((e) => {
+//       return !(
+//         e.name.includes("EXPIRED") ||
+//         e.name.includes("DAMAGED") ||
+//         e.stock === 0
+//       );
+//     })
+//     .map((e) => {
+//       const namep = e.name.trim().toUpperCase();
+//       const TrackingCode = e.id + namep.slice(0,3);
+//       let shppingPrice = e.price * 0.05;
+//       if (e.origin === "International") {
+//         shppingPrice = e.price * 0.2;
+//       }
+//       let Penalty=0;
+//       if(e.weight>50) {
+//         Penalty=100;
 
-      }
-      return{
-        ...e,
-        TrackingCode:TrackingCode,
-        name:namep,
-   totalprice:e.price+shppingPrice+Penalty,
-        shppingPrice:shppingPrice,
-        Penalty:Penalty
+//       }
+//       return{
+//         ...e,
+//         TrackingCode:TrackingCode,
+//         name:namep,
+//    totalprice:e.price+shppingPrice+Penalty,
+//         shppingPrice:shppingPrice,
+//         Penalty:Penalty
 
 
         
-      }
+//       }
       
-    });
+//     });
 
-const div=document.querySelector("#inventory-grid")
-    // dom
-Activesmileproducts.forEach(element => {
-    const card = document.createElement("div");
+// const div=document.querySelector("#inventory-grid")
+//     // dom
+// Activesmileproducts.forEach(element => {
+//     const card = document.createElement("div");
     
-    card.innerHTML = `
-      <div class="main-card max-w-sm mx-auto p-6 bg-white rounded-3xl shadow-xl border border-gray-100 transition-all hover:shadow-2xl cursor-pointer">
-        <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-1">${element.name}</h2>
-        <p class="text-sm font-mono font-bold text-blue-600 mb-6 tracking-code">#${element.TrackingCode}</p>
-        <div class="pt-4 border-t border-gray-100">
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest text-gray-400">Price</span>
-          <p class="text-3xl font-black text-gray-900 leading-none mt-1">$${element.totalprice}</p>
-        </div>
-      </div>`;
+//     card.innerHTML = `
+//       <div class="main-card max-w-sm mx-auto p-6 bg-white rounded-3xl shadow-xl border border-gray-100 transition-all hover:shadow-2xl cursor-pointer">
+//         <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-1">${element.name}</h2>
+//         <p class="text-sm font-mono font-bold text-blue-600 mb-6 tracking-code">#${element.TrackingCode}</p>
+//         <div class="pt-4 border-t border-gray-100">
+//           <span class="text-xs font-bold text-gray-400 uppercase tracking-widest text-gray-400">Price</span>
+//           <p class="text-3xl font-black text-gray-900 leading-none mt-1">$${element.totalprice}</p>
+//         </div>
+//       </div>`;
 
-    const kana = card.querySelector(".main-card");
+//     const kana = card.querySelector(".main-card");
 
-    // Stock Alert Logic
-    if (element.stock < 5) {
-        kana.classList.remove("bg-white");
-        kana.classList.add("bg-red-50", "border-red-400", "border-2");
-        kana.querySelector('.tracking-code').classList.replace("text-blue-600", "text-red-600");
-    }
+//     // Stock Alert Logic
+//     if (element.stock < 5) {
+//         kana.classList.remove("bg-white");
+//         kana.classList.add("bg-red-50", "border-red-400", "border-2");
+//         kana.querySelector('.tracking-code').classList.replace("text-blue-600", "text-red-600");
+//     }
 
-    // Click Event Fixed
-    card.addEventListener("click", () => {
-        // Ka saar dhamaan class-yadii hore (White ama Red)
-        kana.classList.remove("bg-red-50", "border-red-400", "bg-white", "border-2");
+//     // Click Event Fixed
+//     card.addEventListener("click", () => {
+//         // Ka saar dhamaan class-yadii hore (White ama Red)
+//         kana.classList.remove("bg-red-50", "border-red-400", "bg-white", "border-2");
         
-        // Ku dar class-yada cusub (Kala saar xaraf kasta)
-        kana.classList.add("bg-blue-600", "text-white", "shadow-blue-500/50");
+//         // Ku dar class-yada cusub (Kala saar xaraf kasta)
+//         kana.classList.add("bg-blue-600", "text-white", "shadow-blue-500/50");
 
-        // Hubi in dhamaan qoraalka gudaha ku jira uu cadaan noqdo
-        kana.querySelectorAll("h2, p, span").forEach(el => {
-            el.classList.add("text-white");
-            el.classList.remove("text-gray-900", "text-blue-600", "text-gray-400", "text-red-600");
-        });
+//         // Hubi in dhamaan qoraalka gudaha ku jira uu cadaan noqdo
+//         kana.querySelectorAll("h2, p, span").forEach(el => {
+//             el.classList.add("text-white");
+//             el.classList.remove("text-gray-900", "text-blue-600", "text-gray-400", "text-red-600");
+//         });
 
-        console.log(`Alaabta ${element.name} waa la dalbaday! ✅`);
-    });
+//         console.log(`Alaabta ${element.name} waa la dalbaday! ✅`);
+//     });
 
-    div.append(card);
-});
-return Activesmileproducts
-};
-console.table(SmileHouseSmartInventoryShipping(smileHouseProducts))
+//     div.append(card);
+// });
+// return Activesmileproducts
+// };
+// console.table(SmileHouseSmartInventoryShipping(smileHouseProducts))
+
+// const dhibcaha = [45, 80, 30, 95, 55, 20];
+// const pass=dhibcaha.filter((e)=>e>=50)
+// console.log(pass)
+
+// const qiimahaUSD = [10, 50, 100];
+// const somalishlling=qiimahaUSD.map((e)=>e*25000);
+// console.log(somalishlling)
+// const macaamiisha = ["cali", "sahra", "axmed", "bo"];
+
+// const macamishaActiveah=macaamiisha.filter((e)=>e.length>3)
+//                                    .map((e)=>e.toUpperCase());
+//  console.log(macamishaActiveah)
+                              
+// const magacyada = ["Nairobi", "Mombasa", "Kisumu", "Nakuru"]
+// const dadka = [4000000, 1200000, 500000, 300000];
+// const heerka_amniga = [80, 45, 90, 60];
+// const macaamiil=heerka_amniga.filter((e,index)=>{
+// const activemacamiishaah=e[index]
+// const activedadkaah=dadka[index];
+// const activeheerka=dadka[index];
 
 
 
+// })
+// const magacyada = ["Cali", "Sahra", "Axmed"];
+// const lacagta = [100, 500, 50];
+
+// // Waxaan rabaa kaliya qofka bixiyey lacag ka badan 200
+// const natiijo = magacyada.filter((magac, i) => {
+//     // 'i' halkan waxay noqon doontaa 0, markaas 1, markaas 2
+//     // Waxaan dhihi karnaa: "Iska reeb magaca haddii lacagtiisu (lacagta[i]) ay yartahay"
+//     return lacagta[i] > 200; 
+// });
+
+// console.log(natiijo); // Waxaa soo baxaya kaliya ["S
+// ahra"]
+// const productNames = ["  smart watch  ", "old monitor-X", "  L-bracket  ", "gaming mouse"]
+
+// const prices = [150, 80, 25, 60]
+
+// const stock = [12, 0, 45, 5]
+// const processSmileHouseInventory=(productNames,prices,stock)=>{
+// const ob=productNames.map((magac,index)=>{
+//   return {products:magac,price:prices[index],quantity:stock[index]};
+
+// })
+// const product=ob.filter((e)=>{
+//   const mg=e.products.trim();
+//   return !(mg.endsWith("-X")||e.q===0)
+
+// })
+//             .map((e)=>{
+//               let totalValue=e.price*e.price;
+//               const Discount=totalValue*0.1;
+
+//             })
+
+
+// }
+// console.table(processSmileHouseInventory(productNames,prices,stock))
 
 
 
+//  console.table(processSmileHouseInventory(productNames,prices,stock))
