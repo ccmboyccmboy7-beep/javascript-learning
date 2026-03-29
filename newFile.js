@@ -1704,3 +1704,12 @@
 
 
 //  console.table(processSmileHouseInventory(productNames,prices,stock))
+console.log("Cayaartii waa bilaabatay")
+setTimeout(()=>{
+    console.log("Taageerayaasha way qaylinayaan")
+},2000)
+setTimeout(()=>{
+console.log("Gool ayaa la dhaliyay!"
+
+)
+},3000);
