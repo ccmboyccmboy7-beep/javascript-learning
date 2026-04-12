@@ -1704,12 +1704,169 @@
 
 
 //  console.table(processSmileHouseInventory(productNames,prices,stock))
-console.log("Cayaartii waa bilaabatay")
-setTimeout(()=>{
-    console.log("Taageerayaasha way qaylinayaan")
-},2000)
-setTimeout(()=>{
-console.log("Gool ayaa la dhaliyay!"
+// console.log("Cayaartii waa bilaabatay")
+// setTimeout(()=>{
+//     console.log("Taageerayaasha way qaylinayaan")
+// },2000)
+// setTimeout(()=>{
+// console.log("Gool ayaa la dhaliyay!"
 
-)
-},3000);
+// )
+// },3000);
+// 1. Meesha xogta lagu keydiyo (State)
+// let maraakiibta = [
+//     { id: 1, magac: "Blue Ocean", miisaan: 12000, nooca: "Cunto", shidaal: 45 },
+//     { id: 2, magac: "Desert Storm", miisaan: 5000, nooca: "Electronics", shidaal: 80 }
+// ];
+
+// // 2. Soo qabashada waxyaabaha HTML-ka (DOM Elements)
+// const shipForm = document.getElementById('ship-form');
+// const shipList = document.getElementById('ship-list');
+// const totalTaxDisplay = document.getElementById('total-tax-display');
+// const shipCount = document.getElementById('ship-count');
+// const emptyState = document.getElementById('empty-state');
+
+// // 3. Shaqada Sawirista (Render Function)
+// const renderShips = () => {
+//     shipList.innerHTML = ""; // Marka hore nadiifi meesha
+//     let totalTax = 0;
+
+//     if (maraakiibta.length === 0) {
+//         emptyState.classList.remove('hidden');
+//     } else {
+//         emptyState.classList.add('hidden');
+//     }
+
+//     maraakiibta.forEach(ship => {
+//         // Nadiifi magaca oo ka dhig Capital
+//         const cleanName = ship.magac.trim().toUpperCase();
+        
+//         // Xisaabi Canshuurta (15% Electronics, 10% kale)
+//         const taxRate = ship.nooca === "Electronics" ? 0.15 : 0.10;
+//         const taxAmount = ship.miisaan * taxRate;
+//         totalTax += taxAmount;
+
+//         // Go'aami Darajada (Heavy/Light)
+//         const rank = ship.miisaan > 10000 ? "HEAVY" : "LIGHT";
+//         const bgClass = rank === "HEAVY" ? "bg-orange-500 text-white" : "bg-slate-800 text-slate-100";
+
+//         // Abuur kaarka markabka (HTML String)
+//         const shipCard = `
+//             <div class="${bgClass} p-6 rounded-[2rem] border border-slate-700 shadow-xl transition-all hover:scale-105 relative group">
+//                 <button onclick="deleteShip(${ship.id})" class="absolute top-4 right-4 text-red-400 opacity-0 group-hover:opacity-100 transition-all">
+//                     <i class="fa-solid fa-trash"></i>
+//                 </button>
+//                 <div class="flex justify-between items-start mb-4">
+//                     <span class="bg-white/20 px-3 py-1 rounded-lg text-[10px] font-bold uppercase">${ship.nooca}</span>
+//                     <span class="font-black text-xs opacity-50">${rank}</span>
+//                 </div>
+//                 <h3 class="text-xl font-black mb-2">${cleanName}</h3>
+//                 <div class="space-y-1 text-sm opacity-80">
+//                     <p>Miisaanka: <strong>${ship.miisaan} kg</strong></p>
+//                     <p>Shidaalka: <strong>${ship.shidaal}%</strong></p>
+//                     <p class="pt-2 border-t border-white/10 mt-2">Canshuurta: <span class="font-bold font-mono">$${taxAmount.toLocaleString()}</span></p>
+//                 </div>
+//             </div>
+//         `;
+//         shipList.innerHTML += shipCard;
+//     });
+
+//     // Cusboonaysii Dashboard-ka
+//     totalTaxDisplay.textContent = `$${totalTax.toLocaleString()}`;
+//     shipCount.textContent = `(${maraakiibta.length})`;
+// };
+
+// // 4. Shaqada lagu darayo Markab Cusub (Add Ship)
+// shipForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+
+//     const name = document.getElementById('ship-name').value;
+//     const weight = Number(document.getElementById('ship-weight').value);
+//     const fuel = Number(document.getElementById('ship-fuel').value);
+//     const type = document.getElementById('ship-type').value;
+
+//     // SHURUUDAHA AMNIGA (Filter Logic)
+//     if (name.endsWith("-X")) {
+//         alert("DIGNIIN: Markabka magaciisu ku dhammaado '-X' waa mamnuuc!");
+//         return;
+//     }
+//     if (fuel < 20) {
+//         alert("SHIDAAL YARI: Markabka shidaalkiisu ka yar yahay 20% ma soo geli karo!");
+//         return;
+//     }
+//     if (weight > 20000) {
+//         alert("MIISAAN CULUS: Dekeddu ma qaadi karto wax ka badan 20,000kg!");
+//         return;
+//     }
+
+//     // Haddii uu gudbo, ku dar Array-ga
+//     const newShip = {
+//         id: Date.now(), // ID u gaar ah oo ku meel gaar ah
+//         magac: name,
+//         miisaan: weight,
+//         nooca: type,
+//         shidaal: fuel
+//     };
+
+//     maraakiibta.push(newShip);
+//     shipForm.reset(); // Nadiifi form-ka
+//     renderShips(); // Dib u sawir shaashadda
+// });
+
+// // 5. Shaqada lagu tirtirayo Markabka (Delete Ship)
+// const deleteShip = (id) => {
+//     if(confirm("Ma hubtaa inaad tirtirayso markabkan?")) {
+//         maraakiibta = maraakiibta.filter(ship => ship.id !== id);
+//         renderShips();
+//     }
+// };
+
+// // Bilow markii u horreysay
+// renderShips();
+
+
+const form = document.querySelector("form");
+const totale_sales = document.querySelector("#totale-sales");
+const Active_listings = document.querySelector("#Active-listings");
+const net_profits = document.querySelector("#net-profits");
+const tbody = document.querySelector("tbody");
+let totalSales = 0;
+let activeCount = 0;
+let totalNetProfit = 0;
+let selling_price = 0;
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const Product = document.querySelector("#Product").value;
+  const cost = Number(document.querySelector("#cost").value);
+  const Profit = Number(document.querySelector("#profit").value);
+
+  activeCount++;
+  selling_price = cost + Profit;
+
+  const tr = document.createElement("tr");
+  tr.classList.add("relative")
+  tr.innerHTML = `<td class="text-start p-6">${Product}</td>
+    <td class="text-start p-6">$${cost}</td>
+    <td class="text-start p-6">$${Profit}</td>
+     <td class="text-start p-6 text-blue-400">$${selling_price}</td>
+     <td class="p-6 text-center"> <button id="action_button"><i class="fas text-slate-500 hover:text-white fa-ellipsis-v"></i></button></td>
+    `;
+ const action_button = tr.querySelector("#action-btn");
+  action_button.addEventListener("click", (e) => {
+const div=document.createElement("div");
+
+div.classList.add("absolute","bottom-0","right-5 p-4")
+div.innerHTML`<i class="fa-solid fa-trash-can text-slate-500 group-hover:text-red-500"></i>`
+
+action_button.append(div)
+
+  });
+  tr.classList.add(
+    "bg-[#1a222f]",
+    "hover:bg-[#1e293b]",
+    "transition-all",
+    "duration-300",
+  );
+  tbody.append(tr);
+});
