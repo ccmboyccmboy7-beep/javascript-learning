@@ -1587,17 +1587,15 @@
 //         shppingPrice:shppingPrice,
 //         Penalty:Penalty
 
-
-        
 //       }
-      
+
 //     });
 
 // const div=document.querySelector("#inventory-grid")
 //     // dom
 // Activesmileproducts.forEach(element => {
 //     const card = document.createElement("div");
-    
+
 //     card.innerHTML = `
 //       <div class="main-card max-w-sm mx-auto p-6 bg-white rounded-3xl shadow-xl border border-gray-100 transition-all hover:shadow-2xl cursor-pointer">
 //         <h2 class="text-2xl font-black text-gray-900 uppercase tracking-tight mb-1">${element.name}</h2>
@@ -1621,7 +1619,7 @@
 //     card.addEventListener("click", () => {
 //         // Ka saar dhamaan class-yadii hore (White ama Red)
 //         kana.classList.remove("bg-red-50", "border-red-400", "bg-white", "border-2");
-        
+
 //         // Ku dar class-yada cusub (Kala saar xaraf kasta)
 //         kana.classList.add("bg-blue-600", "text-white", "shadow-blue-500/50");
 
@@ -1652,7 +1650,7 @@
 // const macamishaActiveah=macaamiisha.filter((e)=>e.length>3)
 //                                    .map((e)=>e.toUpperCase());
 //  console.log(macamishaActiveah)
-                              
+
 // const magacyada = ["Nairobi", "Mombasa", "Kisumu", "Nakuru"]
 // const dadka = [4000000, 1200000, 500000, 300000];
 // const heerka_amniga = [80, 45, 90, 60];
@@ -1660,8 +1658,6 @@
 // const activemacamiishaah=e[index]
 // const activedadkaah=dadka[index];
 // const activeheerka=dadka[index];
-
-
 
 // })
 // const magacyada = ["Cali", "Sahra", "Axmed"];
@@ -1671,7 +1667,7 @@
 // const natiijo = magacyada.filter((magac, i) => {
 //     // 'i' halkan waxay noqon doontaa 0, markaas 1, markaas 2
 //     // Waxaan dhihi karnaa: "Iska reeb magaca haddii lacagtiisu (lacagta[i]) ay yartahay"
-//     return lacagta[i] > 200; 
+//     return lacagta[i] > 200;
 // });
 
 // console.log(natiijo); // Waxaa soo baxaya kaliya ["S
@@ -1697,11 +1693,8 @@
 
 //             })
 
-
 // }
 // console.table(processSmileHouseInventory(productNames,prices,stock))
-
-
 
 //  console.table(processSmileHouseInventory(productNames,prices,stock))
 // console.log("Cayaartii waa bilaabatay")
@@ -1740,7 +1733,7 @@
 //     maraakiibta.forEach(ship => {
 //         // Nadiifi magaca oo ka dhig Capital
 //         const cleanName = ship.magac.trim().toUpperCase();
-        
+
 //         // Xisaabi Canshuurta (15% Electronics, 10% kale)
 //         const taxRate = ship.nooca === "Electronics" ? 0.15 : 0.10;
 //         const taxAmount = ship.miisaan * taxRate;
@@ -1824,49 +1817,398 @@
 // // Bilow markii u horreysay
 // renderShips();
 
+// const form = document.querySelector("form");
+// const totale_sales = document.querySelector("#totale-sales");
+// const Active_listings = document.querySelector("#Active-listings");
+// const net_profits = document.querySelector("#net-profits");
+// const tbody = document.querySelector("tbody");
+// let totalSales = 0;
+// let activeCount = 0;
+// let totalNetProfit = 0;
+// let selling_price = 0;
 
-const form = document.querySelector("form");
-const totale_sales = document.querySelector("#totale-sales");
-const Active_listings = document.querySelector("#Active-listings");
-const net_profits = document.querySelector("#net-profits");
-const tbody = document.querySelector("tbody");
-let totalSales = 0;
-let activeCount = 0;
-let totalNetProfit = 0;
-let selling_price = 0;
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const Product = document.querySelector("#Product").value;
+//   const cost = Number(document.querySelector("#cost").value);
+//   const Profit = Number(document.querySelector("#profit").value);
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const Product = document.querySelector("#Product").value;
-  const cost = Number(document.querySelector("#cost").value);
-  const Profit = Number(document.querySelector("#profit").value);
+//   activeCount++;
+//   selling_price = cost + Profit;
 
-  activeCount++;
-  selling_price = cost + Profit;
+//   const tr = document.createElement("tr");
+//   tr.classList.add("relative")
+//   tr.innerHTML = `<td class="text-start p-6">${Product}</td>
+//     <td class="text-start p-6">$${cost}</td>
+//     <td class="text-start p-6">$${Profit}</td>
+//      <td class="text-start p-6 text-blue-400">$${selling_price}</td>
+//      <td class="p-6 text-center"> <button id="action_button"><i class="fas text-slate-500 hover:text-white fa-ellipsis-v"></i></button></td>
+//     `;
+//  const action_button = tr.querySelector("#action-btn");
+//   action_button.addEventListener("click", (e) => {
+// const div=document.createElement("div");
 
-  const tr = document.createElement("tr");
-  tr.classList.add("relative")
-  tr.innerHTML = `<td class="text-start p-6">${Product}</td>
-    <td class="text-start p-6">$${cost}</td>
-    <td class="text-start p-6">$${Profit}</td>
-     <td class="text-start p-6 text-blue-400">$${selling_price}</td>
-     <td class="p-6 text-center"> <button id="action_button"><i class="fas text-slate-500 hover:text-white fa-ellipsis-v"></i></button></td>
-    `;
- const action_button = tr.querySelector("#action-btn");
-  action_button.addEventListener("click", (e) => {
-const div=document.createElement("div");
+// div.classList.add("absolute","bottom-0","right-5 p-4")
+// div.innerHTML`<i class="fa-solid fa-trash-can text-slate-500 group-hover:text-red-500"></i>`
 
-div.classList.add("absolute","bottom-0","right-5 p-4")
-div.innerHTML`<i class="fa-solid fa-trash-can text-slate-500 group-hover:text-red-500"></i>`
+// action_button.append(div)
 
-action_button.append(div)
+//   });
+//   tr.classList.add(
+//     "bg-[#1a222f]",
+//     "hover:bg-[#1e293b]",
+//     "transition-all",
+//     "duration-300",
+//   );
+//   tbody.append(tr);
+// });
+// const bt=document.querySelector("#btn");
+// const text=document.querySelector("#text");
+// bt.addEventListener("click",(e)=>{
 
-  });
-  tr.classList.add(
-    "bg-[#1a222f]",
-    "hover:bg-[#1e293b]",
-    "transition-all",
-    "duration-300",
-  );
-  tbody.append(tr);
-});
+//  text.classList.toggle("hidden")
+// })
+// setTimeout(() => {
+//     console.log("c/kadir")
+// }, 4000);
+// console.log("Bilaaw");
+// setTimeout(() => {
+//     console.log("dhexe")
+// },0);
+// console.log("dhamaad");
+// let lacag=100;
+// setTimeout((e) => {
+//     lacag=500;
+// }, 2000);
+// console.log(lacag);
+// setTimeout(() => {
+//     console.log("dada")
+// },180000);
+// const salaan=()=>{
+//     return console.log("asc")
+// }
+// setTimeout(() => {
+//     salaan()
+// },5000);
+// 1. Dhismaha: Waxaan leenahay function qaadanaya parameter la yiraahdo 'fure'
+// const mashiinkaCuntada = (fure) => {
+//     const cuntadii = "Pizza"; // Xogta la diyaariyey
+
+//     // 2. Halkan ayaan function-kii dibadda ka yimid ku shidayaa
+//     // Waxaan u dhiibayaa xogtii 'cuntadii'
+//     fure(cuntadii);
+// };
+
+// // 3. Wicitaanka: Halkan ayaan 'Function dhan' u baasayaa mashiinka
+// mashiinkaCuntada((data) => {
+//     console.log("Waxaan helay: " + data);
+// });
+// const helMagaca =(callback)=>{
+//     setTimeout(() => {
+//         const magac="daadir";
+//         callback(magac);
+//     },2000);
+
+// }
+// helMagaca((magac)=>{
+//     console.log(magac)
+// })
+// let m=14;
+//   console.log(m)
+
+// const add=(add)=>{
+//     m=12;
+//     add(m)
+// }
+// add((add)=>{
+//     console.log(add)
+// })
+// const labaJibaar=(n,callback)=>{
+
+//    setTimeout(() => {
+//     const number=n*n;
+//     callback(n)
+//    }, 1000);
+
+// }
+// labaJibaar(5,(data)=>{
+//     console.log(data);
+// })
+// const isbarbardhig=(a,b,natiijo)=>{
+
+// setTimeout(() => {
+//     if(a>b){
+//         natiijo(a)
+//     }
+//     else{
+//         natiijo(b)
+//     }
+// },2000 );
+// }
+// isbarbardhig(5,10,(xogta)=>{
+// console.log(`waxa weyn ${xogta}`)
+// })
+// const getProduct=(callback)=>{
+// setTimeout(() => {
+//     let ob={ id: 1, price: 200 };
+//     callback(ob)
+// },3000);
+// }
+// getProduct((data)=>{
+//     console.log(data.price)
+// })
+// const sooQaadUser=(callback)=>{
+//     setTimeout(() => {
+//         callback("daadir", " Developer")
+//     }, 1000);
+// }
+// sooQaadUser((dat1,data)=>{
+//     console.log(dat1+data)
+// })
+// const number=document.querySelector("#number")
+// const adit=Math.round((2095+799)*0.1)/100;
+// number.textContent+=`${adit}`
+// const sooQaadUser= ()=>{
+// return new Promise((resolve, reject) => {
+//     const hubi=true;
+//     if (hubi) {
+//         resolve("Baastadii waa diyaar")
+//     } else {
+//         reject("err")
+//     }
+// })
+// }
+// sooQaadUser().then((data) => {
+//     console.log(data)
+// }).catch((err) => {
+//     console.log(err)
+// });
+// const hubiImtixaanka=(hibo)=>{
+//     return new Promise((resolve, reject) => {
+//            if(hibo>100){
+//             reject("numberka aad soo galisay waa qalad")
+//         }
+//     else if(hibo>=50){
+//             resolve("Waad baastay")
+//         }
+//          else {
+//             reject("Waan ka xunnahay")
+
+//         }
+//     })
+
+// }
+// hubiImtixaanka(110).then((data)=>{
+//     console.log(data)
+// }).catch((err)=>{
+//     console.log(err)
+// })
+// const sooQaadUser=(id,name,role)=>{
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             const user={
+//                 id:id,
+//                 name:name,
+//                 role:role,
+//             }
+//             resolve(user)
+//         }, 1500);
+//     })
+// }
+// sooQaadUser(1,"Daadir","Admin").then((data)=>{
+//     console.log(`Username-ka waa:${data.name}`)
+// })
+// const sooDirFariin =()=>{
+//     return new Promise((sax, qalad) => {
+//         setInterval(() => {
+//             sax("Fariintii waa la diray")
+//         }, 1000);
+//     })
+// }
+// sooDirFariin().then((data)=>{
+// console.log(data)
+// })
+// const iskuDarPromise=(x,y)=>{
+// return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(x+y)
+//     }, 2000);
+// })
+// }
+// iskuDarPromise(10,2).then((data)=>{
+//     console.log(data*2)
+// })
+// const helMagac=(magac)=>{
+// return new Promise((resolve, reject) => {
+//     resolve(magac)
+// })
+// }
+// const helshaqo=(m)=> m+" waa shaqaalo nadaafad"
+// helMagac("daadir")
+// .then((data)=>{
+
+//     return helshaqo(data)
+// })
+// .then((shaqo)=>{
+//     console.log(shaqo)
+// })
+// const kordhin=(n)=>{
+// return new Promise((resolve, reject) => {
+//     if (typeof n!=`number`) {
+//         reject("fadalan qor number")
+//     } else {
+//         resolve(n+5)
+//     }
+
+// })
+// }
+// kordhin()
+// .then((data)=>data+5)
+// .then((data)=>data+5)
+// .then((data)=>console.log(data))
+// .catch((erro)=>console.log(erro))
+// const loggedIn=(user)=>{
+//     return new Promise((resolve, reject) => {
+//         resolve(user)
+//     })
+// }
+// loggedIn({id:20123,name:"daadir",age:18})
+// .then((data)=>{
+//     data.id
+// return data})
+// .then((data)=>{
+//     data.name
+//     return data
+// })
+// .then((data)=>{
+//     data.age
+// return data})
+// .then((data)=>console.log(data))
+// const shippingItems = [
+//   { name: "  Macbook Pro  ", category: "Electronics", price: 1200, weight: 2 },
+//   { name: "Raw Meat-X", category: "Food", price: 15, weight: 5 },
+//   { name: "  Luxury Sofa  ", category: "Furniture", price: 500, weight: 45 },
+//   { name: "Old Table-X", category: "Furniture", price: 80, weight: 10 },
+//   { name: "  Gaming Chair  ", category: "Furniture", price: 150, weight: 25 },
+//   { name: "Mouse Pad", category: "Electronics", price: 10, weight: 0.5 },
+// ];
+
+// const SmileHouse = (ob) => {
+//   const kuwagudbay = ob
+//     .filter(({name, price, category}) => !(
+//         name.endsWith("-X") || category === "Food" || price < 20
+//     ))
+//     .map((data) => ({
+//         ...data,
+//         price: data.price + (data.weight > 20 ? 50 : 0),
+//         name: data.name.trim()
+//     }));
+
+//   const container = document.createElement("div");
+//   container.classList.add("grid", "grid-cols-1", "md:grid-cols-3", "gap-6", "p-10");
+//   document.body.append(container);
+
+//   kuwagudbay.forEach(element => {
+//     const div = document.createElement("div");
+//     // Waxaan ku darnay 'relative' si Receipt-ku ugu dhex jiro
+//     div.classList.add("bg-blue-700", "p-8", "rounded-3xl", "flex", "flex-col", "items-center", "gap-5", "relative", "overflow-hidden", "transition-all", "duration-500", "shadow-xl");
+    
+//     div.innerHTML = `
+//         <h1 class="font-bold text-2xl text-white">${element.name}</h1>
+//         <p class="text-4xl text-white font-black">${element.price}$</p>
+//         <div class="flex gap-2 text-white/70">
+//           <span>${element.category}</span> | <span>${element.weight}kg</span>
+//         </div>
+//         <button class="w-full text-xl capitalize hover:bg-green-400 transition-all bg-white btn text-black py-4 rounded-xl font-bold shadow-md">Pay Now</button>
+//     `;
+
+//     const btn = div.querySelector(".btn");
+    
+//     btn.addEventListener("click", () => {
+//         // 1. Bedel midabka
+//         div.classList.replace("bg-blue-700", "bg-green-600");
+//         btn.style.display = "none"; // Qari badanka
+
+//         // 2. Abuuri Receipt-ka (Warqadda)
+//         const receipt = document.createElement("div");
+//         receipt.classList.add("absolute", "inset-0", "bg-white", "m-4", "rounded-2xl", "p-6", "flex", "flex-col", "items-center", "justify-center", "animate-bounce-in");
+        
+//         receipt.innerHTML = `
+//             <div class="text-green-600 text-5xl mb-2">✅</div>
+//             <h2 class="text-gray-800 font-bold text-xl mb-1">Smile House</h2>
+//             <p class="text-gray-500 text-sm mb-4">Official Receipt</p>
+//             <div class="w-full border-t border-dashed border-gray-300 py-2">
+//                 <div class="flex justify-between text-gray-700 text-sm">
+//                     <span>Item:</span> <b>${element.name}</b>
+//                 </div>
+//                 <div class="flex justify-between text-gray-700 text-sm">
+//                     <span>Total:</span> <b>$${element.price}</b>
+//                 </div>
+//             </div>
+//             <p class="text-[10px] text-gray-400 mt-4">Thank you for your purchase!</p>
+//         `;
+
+//         div.append(receipt);
+
+//         // 3. Kadib 3 ilbiriqsi, tartiib u tirtir
+//         setTimeout(() => {
+//             div.style.transform = "translateY(-20px)";
+//             div.style.opacity = "0";
+//             setTimeout(() => div.remove(), 500);
+//         }, 3500);
+//     });
+
+//     container.append(div);
+//   });
+
+//   return kuwagudbay;
+// };
+
+// SmileHouse(shippingItems);
+// const number=(n)=>{
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if(typeof n !==`number`){
+//                 reject("numbergali")
+//             }
+//             else{
+// resolve(n+8)
+//             }
+            
+
+//         }, 1000);
+//     })
+// };
+// const helnumber=async () => {
+//     try{
+// const magac=await number(12)
+//     console.log(magac)
+//     }
+//     catch(err){
+// console.log(err)
+//     }
+
+// }
+// helnumber()
+// const helAlaab = (id, magac, qiimo, stock) => {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if (id.length < 4) {
+//                 reject("Cilad: ID-gu waa inuu ka badnaadaa 3 xaraf!");
+//             } else {
+//                 resolve({ id, magac, qiimo, stock });
+//             }
+//         }, 1000); 
+//     });
+// };
+
+// const muujiAlaabta=async () => {
+//     try{
+// const alaab= await helAlaab(12,"daadir",45,4)
+// console.log(alaab)
+//     }
+//     catch(err){
+//     console.log(err)
+//     }
+// }
+// muujiAlaabta()
